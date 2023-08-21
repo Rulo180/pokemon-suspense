@@ -1,7 +1,13 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import MainPage from "./pages/MainPage";
 
-function App() {
-  return <div className="App">Hello world!</div>;
-}
+const App: React.FC = (): JSX.Element => {
+  return (
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+    </Routes>
+  );
+};
 
 export default App;
