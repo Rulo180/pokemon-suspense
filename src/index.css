@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+      --color-primary: 78 177 198;
+      --color-secondary: 200 238 227;
+      --color-copy: 21 78 77;
+    }
+  }
