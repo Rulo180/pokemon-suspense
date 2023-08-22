@@ -45,7 +45,7 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-const MainPage: React.FC = (): JSX.Element => {
+const CollectionPage: React.FC = (): JSX.Element => {
   const [{ data, status, error }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -69,14 +69,12 @@ const MainPage: React.FC = (): JSX.Element => {
       </div>
     );
   } else if (!data) {
-    return <div>Empty state</div>
+    return <div>Empty state</div>;
   }
 
-
   return (
-    <div className="h-100 p-6 bg-slate-600">
-      <h1 className="mb-6 text-center text-white">My Pokemon Collection</h1>
-      <div className="flex justify-center"></div>
+    <div className="p-6 bg-slate-600 bg-white">
+      <h1 className="mb-6 text-center text-copy">My Pokemon Collection</h1>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         {data.map((pokemon) => (
           <PokemonCard pokemon={pokemon} />
@@ -86,4 +84,4 @@ const MainPage: React.FC = (): JSX.Element => {
   );
 };
 
-export default MainPage;
+export default CollectionPage;

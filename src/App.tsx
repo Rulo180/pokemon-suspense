@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import CollectionPage from "./pages/CollectionPage";
+import TeamPage from "./pages/TeamPage";
 import Sidebar from "./components/Sidebar";
 
 const App: React.FC = (): JSX.Element => {
@@ -7,9 +9,10 @@ const App: React.FC = (): JSX.Element => {
     <div className="flex">
       <Sidebar />
       <main>
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-    </Routes>
+        <Routes>
+          <Route path="/" element={<TeamPage />} />
+          <Route path="/collection" element={<CollectionPage />} />
+        </Routes>
       </main>
     </div>
   );
