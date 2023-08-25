@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Pokemon, PokemonType } from "../pokemon";
+import { Pokemon, PokemonType } from "../../pokemon";
 
 interface IPokemonCardProps {
   pokemon: Pokemon;
@@ -37,11 +37,11 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
             <sup className="pl-1">{number}</sup>
           </h3>
         </a>
-        <div className="flex align-center mx-[-0.25rem] overflow-x-auto types-scrollbar">
+        <div className="flex align-center space-x-1 overflow-x-auto types-scrollbar">
           {type.map((type: PokemonType) => (
             <span
               key={`${name}-${type}`}
-              className="border border-slate-400 rounded-full px-2 py-1 text-xs mx-1 mb-1"
+              className="border border-slate-400 bg-slate-200 rounded-full px-2 py-1 text-xs mb-1"
             >
               {type}
             </span>

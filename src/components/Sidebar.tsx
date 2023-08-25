@@ -8,7 +8,7 @@ const Sidebar: React.FC = (): JSX.Element => {
   };
 
   return (
-    <nav id="sidebar" className="bg-secondary h-screen flex flex-col py-2 px-3">
+    <nav id="sidebar" className="bg-secondary flex flex-col py-2 px-3">
       <div className="pb-6">
         <button onClick={handleClick}>
           <MdMenu />
