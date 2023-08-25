@@ -1,7 +1,50 @@
-const formatDate = (date: Date) =>
-  `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")} ${String(
-    date.getSeconds()
-  ).padStart(2, "0")}.${String(date.getMilliseconds()).padStart(3, "0")}`;
+type PokemonType =
+  | "Bug"
+  | "Dragon"
+  | "Dark"
+  | "Electric"
+  | "Fairy"
+  | "Fire"
+  | "Fighting"
+  | "Flying"
+  | "Grass"
+  | "Ground"
+  | "Ice"
+  | "Normal"
+  | "Poison"
+  | "Psychic"
+  | "Rock"
+  | "Steel"
+  | "Water";
+
+type Attack = {
+  damage: number;
+  name: string;
+  type: PokemonType;
+};
+
+type Pokemon = {
+  id: string;
+  name: string;
+  image: string;
+  number: string;
+  type: PokemonType[];
+  attacks: {
+    special: Attack[];
+  };
+};
+
+const parsePokemons = (pokemons: Array<Pokemon>) => {
+  return pokemons.map((pokemon) => {
+    let pokemonTypes: PokemonType[] = [];
+    pokemon.attacks.special.forEach(({ type }) => {
+      if (!pokemonTypes.includes(type)) {
+        pokemonTypes.push(type);
+      }
+    });
+    return { ...pokemon, type: pokemonTypes };
+  });
+};
 
 const fetchPokemons = async (first = 10, delay = "1500") => {
   const pokemonQuery = `
@@ -56,4 +99,5 @@ const fetchPokemons = async (first = 10, delay = "1500") => {
     });
 };
 
-export { fetchPokemons };
+export { fetchPokemons, parsePokemons };
+export type { Pokemon, PokemonType };

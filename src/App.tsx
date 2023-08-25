@@ -8,7 +8,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <div className="flex">
       <Sidebar />
-      <main>
+      <main className="w-full">
         <Routes>
           <Route path="/" element={<TeamPage />} />
           <Route path="/collection" element={<CollectionPage />} />

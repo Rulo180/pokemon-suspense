@@ -4,9 +4,40 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-      --color-primary: 78 177 198;
-      --color-secondary: 200 238 227;
-      --color-copy: 21 78 77;
-    }
+  :root {
+    --color-primary: 78 177 198;
+    --color-secondary: 200 238 227;
+    --color-copy: 21 78 77;
   }
+}
+
+@layer components {
+  .btn {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75;
+  }
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/75 focus:ring-primary/75;
+  }
+  .btn-secondary {
+    @apply border border-primary hover:outline-2 focus:ring-primary/75;
+  }
+}
+
+.types-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+.types-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.types-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(209 213 219);
+  border-radius: 10px;
+}
+
+.types-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(209 213 219) transparent;
+}

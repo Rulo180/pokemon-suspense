@@ -1,15 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 
-import { fetchPokemons } from "../api";
+import { fetchPokemons, Pokemon, parsePokemons } from "../pokemon";
 import PokemonCard from "../components/PokemonCard";
 
 type Action =
   | { type: "fetching" }
-  | { type: "success"; data: [] }
+  | { type: "success"; data: any }
   | { type: "error"; error: string };
 
 interface State {
-  data: [] | null;
+  data: Array<Pokemon> | null;
   error: string | null;
   status: "idle" | "pending" | "resolved" | "rejected";
 }
@@ -19,7 +19,6 @@ const initialState: State = {
   error: null,
   status: "idle",
 };
-
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "fetching": {
@@ -50,9 +49,9 @@ const CollectionPage: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     dispatch({ type: "fetching" });
-    fetchPokemons().then(
+    fetchPokemons(50).then(
       (data) => {
-        dispatch({ type: "success", data: data });
+        dispatch({ type: "success", data: parsePokemons(data) });
       },
       (error) => {
         dispatch({ type: "error", error });
@@ -75,9 +74,14 @@ const CollectionPage: React.FC = (): JSX.Element => {
   return (
     <div className="p-6 bg-slate-600 bg-white">
       <h1 className="mb-6 text-center text-copy">My Pokemon Collection</h1>
-      <div className="mt-6 flex flex-wrap justify-center gap-3">
+      <div className="mt-6 grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(9rem,12rem))]">
         {data.map((pokemon) => (
-          <PokemonCard pokemon={pokemon} />
+          <PokemonCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            onAddClick={() => console.log("Added to the team")}
+            url={`/collection/${pokemon.name}`}
+          />
         ))}
       </div>
     </div>
