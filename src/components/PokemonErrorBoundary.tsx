@@ -13,12 +13,28 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
   resetErrorBoundary,
 }) => {
   return (
-    <div role="alert">
-      There was an error:{" "}
-      <pre style={{ whiteSpace: "normal" }}>{error.message}</pre>
-      {canReset ? (
-        <button onClick={resetErrorBoundary}>Try again</button>
-      ) : null}
+    <div role="alert" className="flex flex-col items-center py-6">
+      <figure>
+        <img
+          src="/images/pikachu-sad.png"
+          alt="Sad pikachu"
+          width={200}
+          height={260}
+        />
+      </figure>
+      <div className="px-6 py-4 rounded bg-slate-100 text-center space-y-1">
+        <div className="pb-4">
+          <h2 className="text-xl text-primary font-bold">
+            Something wrong here...
+          </h2>
+        </div>
+        <p>Sorry. We are having technical issues (as you can see).</p>
+        <p>Try to refresh the page, sometimes works :)</p>
+        {canReset ? (
+          <button onClick={resetErrorBoundary}>Try again</button>
+        ) : null}
+        <pre style={{ whiteSpace: "normal" }}>{error.message}</pre>
+      </div>
     </div>
   );
 };
