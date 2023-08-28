@@ -1,27 +1,29 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { Pokemon, PokemonType } from "../../pokemon";
 
 interface IPokemonCardProps {
+  ctaLabel: string | ReactNode;
   pokemon: Pokemon;
-  onAddClick: () => void;
+  onCtaClick: (pokemonId: string) => void;
   url: string;
 }
 
 const PokemonCard: React.FC<IPokemonCardProps> = ({
+  ctaLabel,
   pokemon,
-  onAddClick,
+  onCtaClick,
   url,
 }) => {
-  const { image, name, number, types } = pokemon;
-  const handleOnAddClick = (event: React.MouseEvent) => {
+  const { id, image, name, number, types } = pokemon;
+  const handleCtaClick = (event: React.MouseEvent) => {
     event.preventDefault();
-    onAddClick();
+    onCtaClick(id);
   };
   return (
     <article
-      key={pokemon.id}
+      key={id}
       className="text-copy position-relative border border-secondary rounded bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow"
     >
       <Link to={url}>
@@ -50,12 +52,12 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
             ))}
           </div>
           <div className="flex items-center justify-between text-sm pt-2">
-            <button className="btn btn-secondary">Ver info</button>
+            <button className="btn btn-secondary">See info</button>
             <button
-              className="btn btn-primary shadow-sm text-white"
-              onClick={handleOnAddClick}
+              className="btn btn-primary shadow-sm rounded-full p-2"
+              onClick={handleCtaClick}
             >
-              Agregar
+              {ctaLabel}
             </button>
           </div>
         </div>

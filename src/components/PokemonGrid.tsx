@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { MdAdd, MdRemove } from "react-icons/md";
+
 import { Pokemon } from "../pokemon";
 import { Resource } from "../utils";
+import { usePokemonTeam } from "../context/pokemon-team";
+import { MAX_TEAM_SIZE } from "../constants";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const PokemonCard = React.lazy(
   () => import("../components/PokemonCard/PokemonCard")
@@ -11,17 +16,53 @@ interface PokemonGridProps {
 }
 
 const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [pokemonToBeRemoved, setPokemonToBeRemoved] = useState("");
+  const [team, setTeam] = usePokemonTeam();
   const pokemons = pokemonResources.read();
+
+  const handleAddClick = (pokemonId: string) => {
+    if (team.includes(pokemonId)) {
+      setIsModalOpen(true);
+      setPokemonToBeRemoved(pokemonId);
+    } else {
+      if (team.length < MAX_TEAM_SIZE) {
+        setTeam([...team, pokemonId]);
+      }
+    }
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDelete = () => {
+    const filteredPokemons = team.filter((id) => id !== pokemonToBeRemoved);
+    setTeam(filteredPokemons);
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="mt-6 grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(9rem,12rem))]">
-      {pokemons.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.id}
-          pokemon={pokemon}
-          onAddClick={() => console.log("Added to the team")}
-          url={`/collection/${pokemon.name.toLowerCase()}`}
-        />
-      ))}
+    <div className="mt-6 grid gap-6 grid-cols-[repeat(auto-fit,minmax(9rem,12rem))]">
+      {pokemons.map((pokemon) => {
+        const isOnTeam = team.includes(pokemon.id);
+        return (
+          <PokemonCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            onCtaClick={handleAddClick}
+            ctaLabel={
+              isOnTeam ? <MdRemove size={"1rem"} /> : <MdAdd size={"1rem"} />
+            }
+            url={`/collection/${pokemon.name.toLowerCase()}`}
+          />
+        );
+      })}
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onCancel={handleCancel}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };
