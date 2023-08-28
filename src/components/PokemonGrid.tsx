@@ -19,7 +19,7 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
           key={pokemon.id}
           pokemon={pokemon}
           onAddClick={() => console.log("Added to the team")}
-          url={`/collection/${pokemon.name}`}
+          url={`/collection/${pokemon.name.toLowerCase()}`}
         />
       ))}
     </div>
