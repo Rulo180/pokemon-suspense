@@ -14,7 +14,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
   onAddClick,
   url,
 }) => {
-  const { image, name, number, type } = pokemon;
+  const { image, name, number, types } = pokemon;
   const handleOnAddClick = (event: React.MouseEvent) => {
     event.preventDefault();
     onAddClick();
@@ -40,7 +40,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
             <sup className="pl-1">{number}</sup>
           </h3>
           <div className="flex align-center space-x-1 overflow-x-auto types-scrollbar">
-            {type.map((type: PokemonType) => (
+            {types.map((type: PokemonType) => (
               <span
                 key={`${name}-${type}`}
                 className="border border-slate-400 bg-slate-200 rounded-full px-2 py-1 text-xs mb-1"

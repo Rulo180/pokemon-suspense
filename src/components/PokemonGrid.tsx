@@ -1,5 +1,5 @@
 import React from "react";
-import { Pokemon, parsePokemons } from "../pokemon";
+import { Pokemon } from "../pokemon";
 import { Resource } from "../utils";
 
 const PokemonCard = React.lazy(
@@ -11,7 +11,7 @@ interface PokemonGridProps {
 }
 
 const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
-  const pokemons = parsePokemons(pokemonResources.read());
+  const pokemons = pokemonResources.read();
   return (
     <div className="mt-6 grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(9rem,12rem))]">
       {pokemons.map((pokemon) => (

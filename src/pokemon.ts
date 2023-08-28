@@ -28,7 +28,7 @@ type Pokemon = {
   name: string;
   image: string;
   number: string;
-  type: PokemonType[];
+  types: PokemonType[];
   attacks: {
     special: Attack[];
   };
@@ -54,13 +54,7 @@ const fetchPokemons = async (first = 10, delay = "1500") => {
             number
             name
             image
-            attacks {
-            special {
-                name
-                type
-                damage
-            }
-            }
+            types
         }
         }
   `;
