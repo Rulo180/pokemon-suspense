@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
 import Sidebar from "./components/Sidebar";
+import { PokemonTeamProvider } from "./context/pokemon-team";
 const CollectionPage = React.lazy(() => import("./pages/CollectionPage"));
 const TeamPage = React.lazy(() => import("./pages/TeamPage"));
 const PokemonPage = React.lazy(() => import("./pages/PokemonPage"));
@@ -12,11 +13,16 @@ const App: React.FC = (): JSX.Element => {
       <Sidebar />
       <main className="w-full">
         <React.Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<TeamPage />} />
-            <Route path="/collection" element={<CollectionPage />} />
-            <Route path="/collection/:pokemonName" element={<PokemonPage />} />
-          </Routes>
+          <PokemonTeamProvider>
+            <Routes>
+              <Route path="/" element={<TeamPage />} />
+              <Route path="/collection" element={<CollectionPage />} />
+              <Route
+                path="/collection/:pokemonName"
+                element={<PokemonPage />}
+              />
+            </Routes>
+          </PokemonTeamProvider>
         </React.Suspense>
       </main>
     </div>

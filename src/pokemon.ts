@@ -34,20 +34,8 @@ type Pokemon = {
   };
 };
 
-const parsePokemons = (pokemons: Array<Pokemon>) => {
-  return pokemons.map((pokemon) => {
-    let pokemonTypes: PokemonType[] = [];
-    pokemon.attacks.special.forEach(({ type }) => {
-      if (!pokemonTypes.includes(type)) {
-        pokemonTypes.push(type);
-      }
-    });
-    return { ...pokemon, type: pokemonTypes };
-  });
-};
-
 const fetchPokemons = async (first = 10, delay = "1500") => {
-  const pokemonQuery = `
+  const pokemonsQuery = `
     query getPokemons($first: Int!) {
         pokemons(first: $first) {
             id
@@ -68,7 +56,7 @@ const fetchPokemons = async (first = 10, delay = "1500") => {
         delay: delay,
       },
       body: JSON.stringify({
-        query: pokemonQuery,
+        query: pokemonsQuery,
         variables: { first },
       }),
     })

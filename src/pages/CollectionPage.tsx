@@ -28,7 +28,7 @@ const CollectionPage: React.FC = (): JSX.Element => {
       </p>
       {pokemonResources && (
         <PokemonErrorBoundary>
-          <Suspense fallback={<PokemonGridFallback />}>
+          <Suspense fallback={<PokemonGridFallback count={20} />}>
             <PokemonGrid pokemonResources={pokemonResources} />
           </Suspense>
         </PokemonErrorBoundary>
