@@ -23,15 +23,26 @@ type Attack = {
   type: PokemonType;
 };
 
+type PokemonDimension = {
+  minimum: string;
+  maximum: string;
+};
+
 type Pokemon = {
   id: string;
   name: string;
+  classification: string;
   image: string;
   number: string;
   types: PokemonType[];
+  weight: PokemonDimension;
+  height: PokemonDimension;
+  resistant: PokemonType[];
+  weaknesses: PokemonType[];
   attacks: {
     special: Attack[];
   };
+  evolutions: Pokemon[];
 };
 
 const API_URL = "https://graphql-pokemon2.vercel.app/";
