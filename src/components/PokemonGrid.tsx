@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { MdAdd, MdRemove } from "react-icons/md";
+import {
+  MdAdd,
+  MdOutlineErrorOutline,
+  MdPlaylistAddCheck,
+  MdPlaylistRemove,
+  MdRemove,
+} from "react-icons/md";
 
 import { Pokemon } from "../pokemon";
 import { Resource } from "../utils";
 import { usePokemonTeam } from "../context/pokemon-team";
 import { MAX_TEAM_SIZE } from "../constants";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import { useToast } from "../context/toast";
+import Toast from "./Toast";
 
 const PokemonCard = React.lazy(
   () => import("../components/PokemonCard/PokemonCard")
@@ -19,6 +27,7 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pokemonToBeRemoved, setPokemonToBeRemoved] = useState("");
   const [team, setTeam] = usePokemonTeam();
+  const { open } = useToast();
   const pokemons = pokemonResources.read();
 
   const handleAddClick = (pokemonId: string) => {
@@ -28,6 +37,22 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
     } else {
       if (team.length < MAX_TEAM_SIZE) {
         setTeam([...team, pokemonId]);
+        open(
+          <Toast
+            icon={<MdPlaylistAddCheck size="2rem" />}
+            title="Pokemon added"
+            message="This pokemon now is part of your team!"
+          />
+        );
+      } else {
+        open(
+          <Toast
+            icon={<MdOutlineErrorOutline size="2rem" />}
+            message="Cannot add more than 6 pokemons to your team."
+            title="Your team is full"
+            type="error"
+          />
+        );
       }
     }
   };
@@ -40,6 +65,13 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
     const filteredPokemons = team.filter((id) => id !== pokemonToBeRemoved);
     setTeam(filteredPokemons);
     setIsModalOpen(false);
+    open(
+      <Toast
+        icon={<MdPlaylistRemove size="2rem" />}
+        title="Pokemon removed"
+        message="This pokemon is no longer part of your team"
+      />
+    );
   };
 
   return (

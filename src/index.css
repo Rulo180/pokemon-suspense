@@ -7,8 +7,10 @@
   :root {
     --color-primary: 78 177 198;
     --color-secondary: 200 238 227;
+    --color-tertiary: 22 78 77;
     --color-copy: 21 78 77;
-  }
+    --color-error: 164 16 0;
+   }
 }
 
 @layer components {
