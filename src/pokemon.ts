@@ -34,30 +34,24 @@ type Pokemon = {
   };
 };
 
-const fetchPokemons = async (first = 10, delay = "1500") => {
-  const pokemonsQuery = `
-    query getPokemons($first: Int!) {
-        pokemons(first: $first) {
-            id
-            number
-            name
-            image
-            types
-        }
-        }
-  `;
+const API_URL = "https://graphql-pokemon2.vercel.app/";
+// learn more about this API here: https://graphql-pokemon2.vercel.app/
 
+const fetchPokemons = async (
+  query: string,
+  variables = { first: 10 },
+  delay = "1500"
+) => {
   return window
-    .fetch("https://graphql-pokemon2.vercel.app/", {
-      // learn more about this API here: https://graphql-pokemon2.vercel.app/
+    .fetch(API_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json;charset=UTF-8",
         delay: delay,
       },
       body: JSON.stringify({
-        query: pokemonsQuery,
-        variables: { first },
+        query,
+        variables,
       }),
     })
     .then(async (response) => {
@@ -81,30 +75,21 @@ const fetchPokemons = async (first = 10, delay = "1500") => {
     });
 };
 
-const fetchPokemon = async (id: string, delay = "1500") => {
-  const pokemonQuery = `
-    query getPokemons($id: String!) {
-      pokemon(id: $id) {
-        id
-        number
-        name
-        image
-        types
-      }
-    }
-  `;
-
+const fetchPokemon = async (
+  query: string,
+  variables: Record<string, any>,
+  delay = "1500"
+) => {
   return window
-    .fetch("https://graphql-pokemon2.vercel.app/", {
-      // learn more about this API here: https://graphql-pokemon2.vercel.app/
+    .fetch(API_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json;charset=UTF-8",
         delay: delay,
       },
       body: JSON.stringify({
-        query: pokemonQuery,
-        variables: { id },
+        query,
+        variables,
       }),
     })
     .then(async (response) => {

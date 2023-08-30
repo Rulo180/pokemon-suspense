@@ -8,8 +8,23 @@ import Layout from "../components/Layout";
 
 const PokemonGrid = React.lazy(() => import("../components/PokemonGrid"));
 
+const pokemonsQuery = `
+    query getPokemons($first: Int!) {
+        pokemons(first: $first) {
+            id
+            number
+            name
+            image
+            types
+        }
+        }
+  `;
+
+// Fetching the data as soon as we can - (Render as you fetch)
 function createPokemonResource(first?: number): Resource<Pokemon[]> {
-  return createResource(fetchPokemons(first)) as Resource<Pokemon[]>;
+  return createResource(
+    fetchPokemons(pokemonsQuery, { first: first || 50 })
+  ) as Resource<Pokemon[]>;
 }
 
 const CollectionPage: React.FC = (): JSX.Element => {

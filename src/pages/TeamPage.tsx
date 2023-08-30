@@ -8,6 +8,18 @@ import PokemonGridFallback from "../components/PokemonGridFallback";
 
 const PokemonGrid = React.lazy(() => import("../components/PokemonGrid"));
 
+const pokemonQuery = `
+  query getPokemons($id: String!) {
+    pokemon(id: $id) {
+      id
+      number
+      name
+      image
+      types
+    }
+  }
+  `;
+
 const TeamPage: React.FC = (): JSX.Element => {
   const [team, _] = usePokemonTeam();
   const [pokemonResources, setPokemonResources] = useState<Resource<
@@ -15,7 +27,9 @@ const TeamPage: React.FC = (): JSX.Element => {
   > | null>(null);
 
   useEffect(() => {
-    const promises = team.map((pokemonId) => fetchPokemon(pokemonId));
+    const promises = team.map((pokemonId) =>
+      fetchPokemon(pokemonQuery, { id: pokemonId })
+    );
     setPokemonResources(createResource(Promise.all(promises)));
   }, [team]);
 
@@ -25,9 +39,9 @@ const TeamPage: React.FC = (): JSX.Element => {
       description="Here, you can find an organized presentation of all the Pokémon that compose your team. "
     >
       {pokemonResources && (
-          <Suspense fallback={<PokemonGridFallback count={6} />}>
-            <PokemonGrid pokemonResources={pokemonResources} />
-          </Suspense>
+        <Suspense fallback={<PokemonGridFallback count={6} />}>
+          <PokemonGrid pokemonResources={pokemonResources} />
+        </Suspense>
       )}
     </Layout>
   );
