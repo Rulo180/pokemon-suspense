@@ -3,7 +3,6 @@ import React, { useEffect, useState, Suspense } from "react";
 import { fetchPokemons, Pokemon } from "../pokemon";
 
 import { createResource, Resource } from "../utils";
-import PokemonErrorBoundary from "../components/PokemonErrorBoundary";
 import PokemonGridFallback from "../components/PokemonGridFallback";
 import Layout from "../components/Layout";
 
@@ -29,11 +28,9 @@ const CollectionPage: React.FC = (): JSX.Element => {
         your team."
     >
       {pokemonResources && (
-        <PokemonErrorBoundary>
-          <Suspense fallback={<PokemonGridFallback count={20} />}>
-            <PokemonGrid pokemonResources={pokemonResources} />
-          </Suspense>
-        </PokemonErrorBoundary>
+        <Suspense fallback={<PokemonGridFallback count={20} />}>
+          <PokemonGrid pokemonResources={pokemonResources} />
+        </Suspense>
       )}
     </Layout>
   );
