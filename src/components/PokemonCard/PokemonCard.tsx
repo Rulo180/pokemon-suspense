@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { Pokemon, PokemonType } from "../../pokemon";
+import Pill from "../Pill";
 
 interface IPokemonCardProps {
   ctaLabel: string | ReactNode;
@@ -43,12 +44,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
           </h3>
           <div className="flex align-center space-x-1 overflow-x-auto types-scrollbar">
             {types.map((type: PokemonType) => (
-              <span
-                key={`${name}-${type}`}
-                className="border border-slate-400 bg-slate-200 rounded-full px-2 py-1 text-xs mb-1"
-              >
-                {type}
-              </span>
+              <Pill text={type} />
             ))}
           </div>
           <div className="flex items-center justify-between text-sm pt-2">
