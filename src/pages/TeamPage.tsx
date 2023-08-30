@@ -5,6 +5,7 @@ import { usePokemonTeam } from "../context/pokemon-team";
 import { Resource, createResource } from "../utils";
 import { Pokemon, fetchPokemon } from "../pokemon";
 import PokemonGridFallback from "../components/PokemonGridFallback";
+import EmptyState from "../components/EmptyState";
 
 const PokemonGrid = React.lazy(() => import("../components/PokemonGrid"));
 
@@ -36,9 +37,26 @@ const TeamPage: React.FC = (): JSX.Element => {
   return (
     <Layout
       title="Your Pokemon Team Showcase"
-      description="Here, you can find an organized presentation of all the Pokémon that compose your team. "
+      description="Here, you can find an organized presentation of all the Pokémon that compose your team."
     >
-      {pokemonResources && (
+      {team.length === 0 && (
+        <EmptyState
+          title="Your team is empty!"
+          message={
+            <p>
+              Try adding some pokemons in the{" "}
+              <a
+                href="/collection"
+                className="no-underline hover:underline text-blue-600"
+              >
+                Collection
+              </a>{" "}
+              page.
+            </p>
+          }
+        />
+      )}
+      {pokemonResources && team.length > 0 && (
         <Suspense fallback={<PokemonGridFallback count={6} />}>
           <PokemonGrid pokemonResources={pokemonResources} />
         </Suspense>
