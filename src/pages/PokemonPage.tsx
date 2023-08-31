@@ -2,7 +2,8 @@ import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Pokemon, fetchPokemon } from "../pokemon";
 import { createResource, Resource } from "../utils";
-import PokemonInfo from "../components/PokemonInfo";
+import PokemonInfo from "../components/PokemonInfo/PokemonInfo";
+import Skeleton from "../components/PokemonInfo/Skeleton";
 
 const pokemonPageQuery = `
   query getPokemon($name: String!) {
@@ -64,7 +65,7 @@ const PokemonPage: React.FC = (): JSX.Element => {
   return (
     <div className="text-copy p-6">
       {pokemonResource && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Skeleton />}>
           <PokemonInfo pokemonResource={pokemonResource} />
         </Suspense>
       )}

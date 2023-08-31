@@ -1,10 +1,11 @@
 import React from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 
-import { Resource } from "../utils";
-import { Pokemon } from "../pokemon";
-import Pill from "./Pill";
-import PokemonEvolutionCard from "./PokemonEvolutionCard";
+import { Resource } from "../../utils";
+import { Pokemon } from "../../pokemon";
+import Pill from "../Pill";
+import PokemonEvolutionCard from "../PokemonEvolutionCard";
+import Skeleton from "./Skeleton";
 
 interface PokemonInfoProps {
   pokemonResource: Resource<Pokemon>;
@@ -36,7 +37,7 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
       <div className="flex gap-5 p-5">
         <div className="grow">
           <figure>
-            <img alt={name} src={image} />
+            <img className="mx-auto" alt={name} src={image} />
           </figure>
         </div>
         <div className="grow flex flex-col gap-5">
