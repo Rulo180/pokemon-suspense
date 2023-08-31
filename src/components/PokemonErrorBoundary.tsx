@@ -13,13 +13,12 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
   resetErrorBoundary,
 }) => {
   return (
-    <div role="alert" className="flex flex-col items-center py-6">
+    <div role="alert" className="h-full flex flex-col justify-center items-center py-6">
       <figure>
         <img
           src="/images/pikachu-sad.png"
           alt="Sad pikachu"
-          width={200}
-          height={260}
+          width={300}
         />
       </figure>
       <div className="px-6 py-4 rounded bg-slate-100 text-center space-y-1">

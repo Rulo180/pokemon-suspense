@@ -87,7 +87,7 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
         </div>
       </div>
       {evolutions && (
-        <div className="bg-slate-400 p-5 rounded-lg text-white">
+        <div className="bg-slate-300 p-5 rounded-lg">
           <h2 className="text-lg pb-4">Evolutions</h2>
           <div className="flex items-center justify-center">
             <PokemonEvolutionCard image={image} name={name} number={number} url={`/collection/${name.toLowerCase()}`} />

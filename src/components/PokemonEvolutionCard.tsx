@@ -22,7 +22,7 @@ const PokemonEvolutionCard: React.FC<PokemonEvolutionCardProps> = ({
           </figure>
         </div>
         <h3 className="text-md">
-          {name} <span className="text-slate-200">#{number}</span>
+          {name} <span className="text-slate-500">#{number}</span>
         </h3>
       </article>
     </a>
