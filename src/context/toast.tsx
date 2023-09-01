@@ -31,8 +31,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
   ...props
 }) => {
   const [toasts, setToasts] = useState<Toast[] | []>([]);
-
-  const open = (component: ReactNode, timeout = 5000) => {
+  const open = (component: ReactNode, timeout = 4000) => {
     const id = Date.now();
     setToasts((toasts) => [...toasts, { id, component }]);
     setTimeout(() => close(id), timeout);
@@ -45,9 +44,12 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
   return (
     <ToastContext.Provider value={{ open, close }} {...props}>
       {children}
-      <div className="space-y-2 fixed bottom-4 right-4">
+      <div className="fixed bottom-4 right-4 space-y-2">
         {toasts.map(({ id, component }) => (
-          <div key={id} className="relative">
+          <output
+            key={id}
+            className="relative animate-fade-in-out"
+          >
             <button
               className="absolute top-2 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60"
               onClick={() => close(id)}
@@ -55,7 +57,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
               <MdClose color="white" />
             </button>
             {component}
-          </div>
+          </output>
         ))}
       </div>
     </ToastContext.Provider>

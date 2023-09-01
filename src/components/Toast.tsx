@@ -15,10 +15,9 @@ const Toast: React.FC<ToastProps> = ({
 }): JSX.Element => {
   return (
     <div
-      role="alert"
-      className={`flex items-center gap-2 ${
+      className={`flex items-center gap-2 text-white p-4 rounded-lg shadow-lg ${
         type === "error" ? "bg-error" : "bg-tertiary"
-      } text-white p-4 rounded-lg shadow-lg`}
+      }`}
     >
       {icon}
       <div className="flex-flex-column">
