@@ -75,7 +75,7 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
   };
 
   return (
-    <div className="mt-6 grid gap-6 grid-cols-[repeat(auto-fit,minmax(9rem,12rem))]">
+    <div className="mt-6 grid gap-6 grid-cols-[repeat(auto-fit,minmax(9rem,12rem))] justify-center md:justify-start">
       {pokemons.map((pokemon) => {
         const isOnTeam = team.includes(pokemon.id);
         return (

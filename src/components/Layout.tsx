@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, description, title }) => {
   return (
-    <div className="h-full flex flex-col p-6 bg-slate-600 bg-white text-copy">
+    <div className="h-full flex flex-col p-6 bg-slate-600 bg-white text-copy text-center md:text-left">
       <h1 className="mb-6 text-xl font-bold">{title}</h1>
       <p>{description}</p>
       {children}

@@ -25,7 +25,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
   return (
     <article
       key={id}
-      className="text-copy position-relative border border-secondary rounded bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+      className="text-copy text-left position-relative border border-secondary rounded bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow"
     >
       <Link to={url}>
         <aside className="p-3">
