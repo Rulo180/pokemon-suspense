@@ -5,20 +5,19 @@ import { Resource } from "../../utils";
 import { Pokemon } from "../../pokemon";
 import Pill from "../Pill";
 import PokemonEvolutionCard from "../PokemonEvolutionCard";
-import Skeleton from "./Skeleton";
 
 interface PokemonInfoProps {
-  pokemonResource: Resource<Pokemon>;
+  pokemonResource: { data: Resource<Pokemon>; image: Resource<string> };
 }
 
 const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
-  const pokemon = pokemonResource?.read();
+  const pokemon = pokemonResource.data.read();
+  const image = pokemonResource.image.read();
   const {
     attacks,
     classification,
     evolutions,
     height,
-    image,
     name,
     number,
     resistant,
@@ -91,7 +90,12 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
         <div className="bg-slate-300 p-5 rounded-lg">
           <h2 className="text-lg pb-4">Evolutions</h2>
           <div className="flex items-center justify-center">
-            <PokemonEvolutionCard image={image} name={name} number={number} url={`/collection/${name.toLowerCase()}`} />
+            <PokemonEvolutionCard
+              image={image}
+              name={name}
+              number={number}
+              url={`/collection/${name.toLowerCase()}`}
+            />
             {evolutions.map(({ id, image, name, number }) => (
               <React.Fragment>
                 <MdArrowForwardIos size="3rem" />

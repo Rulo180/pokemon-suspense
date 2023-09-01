@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Pokemon, fetchPokemon } from "../pokemon";
-import { createResource, Resource } from "../utils";
+import { Pokemon, fetchPokemon, getImageUrlForPokemon } from "../pokemon";
+import { createResource, preloadImage, Resource } from "../utils";
 import PokemonInfo from "../components/PokemonInfo/PokemonInfo";
 import Skeleton from "../components/PokemonInfo/Skeleton";
 
@@ -45,20 +45,32 @@ const pokemonPageQuery = `
   }
 `;
 
+function getPokemonResource(pokemonName: string): {
+  data: Resource<Pokemon>;
+  image: Resource<string>;
+} {
+  const data = createResource(
+    fetchPokemon(pokemonPageQuery, { name: pokemonName })
+  ) as Resource<Pokemon>;
+  const image = createResource(
+    preloadImage(getImageUrlForPokemon(pokemonName))
+  );
+
+  return { data, image };
+}
+
 const PokemonPage: React.FC = (): JSX.Element => {
-  const [pokemonResource, setPokemonResource] =
-    useState<Resource<Pokemon> | null>(null);
+  const [pokemonResource, setPokemonResource] = useState<{
+    data: Resource<Pokemon>;
+    image: Resource<string>;
+  } | null>(null);
   const { pokemonName } = useParams();
 
   useEffect(() => {
     if (!pokemonName) {
       setPokemonResource(null);
     } else {
-      setPokemonResource(
-        createResource(
-          fetchPokemon(pokemonPageQuery, { name: pokemonName })
-        ) as Resource<Pokemon>
-      );
+      setPokemonResource(getPokemonResource(pokemonName));
     }
   }, [pokemonName]);
 

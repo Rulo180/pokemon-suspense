@@ -124,5 +124,9 @@ const fetchPokemon = async (
     });
 };
 
-export { fetchPokemon, fetchPokemons };
+function getImageUrlForPokemon(pokemonName: string) {
+  return `https://img.pokemondb.net/artwork/${pokemonName.toLowerCase()}.jpg`;
+}
+
+export { fetchPokemon, fetchPokemons, getImageUrlForPokemon };
 export type { Pokemon, PokemonType };
