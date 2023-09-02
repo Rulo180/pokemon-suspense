@@ -25,6 +25,7 @@ Code Sandbox: https://codesandbox.io/p/github/Rulo180/pokemon-suspense/main
 - Skeletons.
 - Promises.
 - createPortal.
+- GraphQL queries.
 - Routing.
 - Responsive layouts.
 - Basic design principles.
