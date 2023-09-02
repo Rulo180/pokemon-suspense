@@ -24,6 +24,7 @@ Code Sandbox: https://codesandbox.io/p/github/Rulo180/pokemon-suspense/main
 - LocalStorage.
 - Skeletons.
 - Promises.
+- createPortal.
 - Routing.
 - Responsive layouts.
 - Basic design principles.
