@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
+import ReactDOM from "react-dom";
 import { MdClose } from "react-icons/md";
 
 type Toast = {
@@ -41,25 +42,31 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
     setToasts((toasts) => toasts.filter((toast) => toast.id !== id));
   };
 
+  const toastRoot = document.getElementById("toast-root");
+
   return (
     <ToastContext.Provider value={{ open, close }} {...props}>
       {children}
-      <div className="fixed bottom-4 right-4 space-y-2">
-        {toasts.map(({ id, component }) => (
-          <output
-            key={id}
-            className="relative animate-fade-in-out"
-          >
-            <button
-              className="absolute top-2 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60"
-              onClick={() => close(id)}
-            >
-              <MdClose color="white" />
-            </button>
-            {component}
-          </output>
-        ))}
-      </div>
+      {toastRoot?.parentNode
+        ? ReactDOM.createPortal(
+            toasts.length ? (
+              <div className="fixed z-[2] bottom-4 right-4 space-y-2">
+                {toasts.map(({ id, component }) => (
+                  <output key={id} className="relative animate-fade-in-out">
+                    <button
+                      className="absolute top-2 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60"
+                      onClick={() => close(id)}
+                    >
+                      <MdClose color="white" />
+                    </button>
+                    {component}
+                  </output>
+                ))}
+              </div>
+            ) : null,
+            toastRoot
+          )
+        : null}
     </ToastContext.Provider>
   );
 };
