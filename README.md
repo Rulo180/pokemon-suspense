@@ -5,7 +5,7 @@
 Hey there! This React project is a playground where I get to practice my existing React knowledge while also applying the new things I've learned in the past few months. 
 I got inspired by the [Epic React course](epicreact.dev/learn) from [Kent C. Dodds](https://twitter.com/kentcdodds) and thought, "Why not dive in and apply everything I've learned?"
 
-Vercel deploy: https://pokemon-team-bay.vercel.app/
+Vercel deploy: https://pokemon-team-bay.vercel.app/ <br>
 Code Sandbox: https://codesandbox.io/p/github/Rulo180/pokemon-suspense/main
 
 ## Technologies and Libraries
