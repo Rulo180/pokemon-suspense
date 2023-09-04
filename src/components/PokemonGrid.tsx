@@ -5,6 +5,7 @@ import {
   MdPlaylistAddCheck,
   MdPlaylistRemove,
   MdRemove,
+  MdShield,
 } from "react-icons/md";
 
 import { Pokemon } from "../pokemon";
@@ -24,15 +25,26 @@ interface PokemonGridProps {
 }
 
 const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
-  const [pokemonToBeRemoved, setPokemonToBeRemoved] = useState("");
   const { openModal, closeModal } = useModal();
   const [team, setTeam] = usePokemonTeam();
   const { open } = useToast();
   const pokemons = pokemonResources.read();
 
+  const handleDelete = (pokemonId: string) => {
+    const filteredPokemons = team.filter((id) => id !== pokemonId);
+    setTeam(filteredPokemons);
+    closeModal();
+    open(
+      <Toast
+        icon={<MdPlaylistRemove size="2rem" />}
+        title="Pokemon removed"
+        message="This pokemon is no longer part of your team"
+      />
+    );
+  };
+
   const handleAddClick = (pokemonId: string) => {
     if (team.includes(pokemonId)) {
-      setPokemonToBeRemoved(pokemonId);
       openModal(
         <>
           <h2 className="text-lg font-semibold mb-4">Confirm Deletion</h2>
@@ -48,7 +60,7 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
             </button>
             <button
               className="px-4 py-2 bg-red-500 text-white rounded"
-              onClick={handleDelete}
+              onClick={() => handleDelete(pokemonId)}
             >
               Remove
             </button>
@@ -78,19 +90,6 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
     }
   };
 
-  const handleDelete = () => {
-    const filteredPokemons = team.filter((id) => id !== pokemonToBeRemoved);
-    setTeam(filteredPokemons);
-    closeModal();
-    open(
-      <Toast
-        icon={<MdPlaylistRemove size="2rem" />}
-        title="Pokemon removed"
-        message="This pokemon is no longer part of your team"
-      />
-    );
-  };
-
   return (
     <div className="mt-6 grid gap-6 grid-cols-[repeat(auto-fit,minmax(9rem,12rem))] justify-center md:justify-start">
       {pokemons.map((pokemon) => {
@@ -99,10 +98,11 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onCtaClick={handleAddClick}
             ctaLabel={
               isOnTeam ? <MdRemove size={"1rem"} /> : <MdAdd size={"1rem"} />
             }
+            onCtaClick={handleAddClick}
+            teamIcon={isOnTeam ? <MdShield size="1.5rem" /> : null}
             url={`/collection/${pokemon.name.toLowerCase()}`}
           />
         );

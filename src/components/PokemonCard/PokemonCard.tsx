@@ -8,6 +8,7 @@ interface IPokemonCardProps {
   ctaLabel: string | ReactNode;
   pokemon: Pokemon;
   onCtaClick: (pokemonId: string) => void;
+  teamIcon?: ReactNode;
   url: string;
 }
 
@@ -15,6 +16,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
   ctaLabel,
   pokemon,
   onCtaClick,
+  teamIcon,
   url,
 }) => {
   const { id, image, name, number, types } = pokemon;
@@ -38,10 +40,13 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
           </figure>
         </aside>
         <div className="h-3/6 px-2 py-3 bg-secondary">
-          <h3 className="font-semibold pb-2">
-            {name}
-            <sup className="pl-1">{number}</sup>
-          </h3>
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold pb-2">
+              {name}
+              <sup className="pl-1">{number}</sup>
+            </h3>
+            {teamIcon}
+          </div>
           <div className="flex align-center space-x-1 overflow-x-auto types-scrollbar">
             {types.map((type: PokemonType) => (
               <Pill text={type} />

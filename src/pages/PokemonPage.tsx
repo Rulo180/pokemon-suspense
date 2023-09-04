@@ -77,7 +77,10 @@ const PokemonPage: React.FC = (): JSX.Element => {
 
   return (
     <div className="text-copy p-3 md:p-6">
-      <Link to="/collection" className="flex items-center text-blue-500 hover:text-blue-700">
+      <Link
+        to="/collection"
+        className="flex items-center text-blue-500 hover:text-blue-700"
+      >
         <MdChevronLeft />
         Back
       </Link>
