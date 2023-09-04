@@ -35,6 +35,12 @@ Code Sandbox: https://codesandbox.io/p/github/Rulo180/pokemon-suspense/main
 - [<img width="25" height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" /> Twitter](https://twitter.com/Rulo_Valles) 
 - [<img width="25" height="25" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /> Linkedin](https://www.linkedin.com/in/martin-valles-0370a8133/)
 
+## Screenshots
+
+![image](https://github.com/Rulo180/pokemon-suspense/assets/4674147/34d955b1-cc7e-45bd-8df2-6c13756b3378)
+
+![image](https://github.com/Rulo180/pokemon-suspense/assets/4674147/faa5d3ad-1090-4d0b-aad5-06761e0cbc71)
+
 ## Available Scripts
 
 In the project directory, you can run:
