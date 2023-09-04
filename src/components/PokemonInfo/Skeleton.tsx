@@ -8,11 +8,11 @@ const Skeleton: React.FC = (): JSX.Element => {
           <div className="w-1/3 h-5 bg-slate-300 rounded mx-auto"></div>
         </div>
 
-        <div className="flex gap-5 my-5">
-          <div className="bg-slate-300 h-[350px] w-1/2"></div>
-          <div className="flex flex-col w-1/2">
-            <div className="bg-slate-300 rounded-lg h-[250px] mb-5"></div>
-            <div className="px-2 py-3 space-y-6 ml-0">
+        <div className="flex flex-col md:flex-row gap-5 my-5">
+          <div className="bg-slate-300 rounded-lg h-[250px] md:h-[350px] md:w-1/2"></div>
+          <div className="flex flex-col md:w-1/2">
+            <div className="bg-slate-300 rounded-lg h-[150px] md:h-[250px] mb-5"></div>
+            <div className="px-2 py-3 space-y-3 md:space-y-6 ml-0">
               <div className="h-5 bg-slate-300 rounded w-1/4"></div>
               <div className="grid grid-cols-6 gap-3 pb-4">
                 <div className="h-4 bg-slate-300 rounded"></div>

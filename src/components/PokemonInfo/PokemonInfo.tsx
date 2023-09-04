@@ -33,28 +33,28 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
           {name} <span className="text-slate-400">#{number}</span>
         </h1>
       </div>
-      <div className="flex gap-5 p-5">
+      <div className="flex flex-col md:flex-row gap-5 py-5 md:p-5">
         <div className="grow">
           <figure>
             <img className="mx-auto" alt={name} src={image} />
           </figure>
         </div>
-        <div className="grow flex flex-col gap-5">
-          <div className="p-4 rounded-lg bg-primary text-black">
-            <div className="grid grid-cols-2 ">
-              {/* row #1 */}
-              <h3 className="text-white text-md pb-3">Height</h3>
-              <h3 className="text-white text-md pb-3">Category</h3>
-              {/* row #2 */}
-              <p className="pb-4 text-lg">
-                {`${height.minimum}-${height.maximum}`}
-              </p>
-              <p className="pb-4 text-lg">{classification}</p>
-              {/* row #3 */}
-              <h3 className="text-white text-md pb-3">Weight</h3>
-              <h3 className="text-white text-md pb-3">Abilities</h3>
-              {/* row #4 */}
-              <p className="pb-4 text-lg">{`${weight.minimum}-${weight.maximum}`}</p>
+        <div className="grow flex flex-col gap-3 md:gap-5">
+          <div className="grid grid-cols-2 gap-4 p-4 rounded-lg bg-primary text-black">
+            <div>
+              <h3 className="text-white text-md pb-1">Height</h3>
+              <p className="text-lg">{`${height.minimum}-${height.maximum}`}</p>
+            </div>
+            <div>
+              <h3 className="text-white text-md pb-1">Category</h3>
+              <p className="text-lg">{classification}</p>
+            </div>
+            <div>
+              <h3 className="text-white text-md pb-1">Weight</h3>
+              <p className="text-lg">{`${weight.minimum}-${weight.maximum}`}</p>
+            </div>
+            <div>
+              <h3 className="text-white text-md pb-1">Abilities</h3>
               <div className="flex flex-col gap-2">
                 {attacks.special.map(({ damage, name }) => {
                   return (
@@ -97,10 +97,9 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemonResource }) => {
               url={`/collection/${name.toLowerCase()}`}
             />
             {evolutions.map(({ id, image, name, number }) => (
-              <React.Fragment>
+              <React.Fragment key={id}>
                 <MdArrowForwardIos size="3rem" />
                 <PokemonEvolutionCard
-                  key={id}
                   image={image}
                   name={name}
                   number={number}
