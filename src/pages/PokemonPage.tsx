@@ -1,9 +1,10 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Pokemon, fetchPokemon, getImageUrlForPokemon } from "../pokemon";
 import { createResource, preloadImage, Resource } from "../utils";
 import PokemonInfo from "../components/PokemonInfo/PokemonInfo";
 import Skeleton from "../components/PokemonInfo/Skeleton";
+import { MdChevronLeft } from "react-icons/md";
 
 const pokemonPageQuery = `
   query getPokemon($name: String!) {
@@ -75,7 +76,11 @@ const PokemonPage: React.FC = (): JSX.Element => {
   }, [pokemonName]);
 
   return (
-    <div className="text-copy p-6">
+    <div className="text-copy p-3 md:p-6">
+      <Link to="/collection" className="flex items-center text-blue-500 hover:text-blue-700">
+        <MdChevronLeft />
+        Back
+      </Link>
       {pokemonResource && (
         <Suspense fallback={<Skeleton />}>
           <PokemonInfo pokemonResource={pokemonResource} />

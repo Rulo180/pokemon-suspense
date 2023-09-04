@@ -16,11 +16,11 @@ const App: React.FC = (): JSX.Element => {
     <PokemonErrorBoundary>
       <ModalProvider>
         <ToastProvider>
-          <div className="flex">
-            <Sidebar />
-            <main className="w-full">
-              <React.Suspense fallback={<Loader />}>
-                <PokemonTeamProvider>
+          <PokemonTeamProvider>
+            <div className="flex">
+              <Sidebar />
+              <main className="w-full">
+                <React.Suspense fallback={<Loader />}>
                   <Routes>
                     <Route path="/" element={<TeamPage />} />
                     <Route path="/collection" element={<CollectionPage />} />
@@ -30,10 +30,10 @@ const App: React.FC = (): JSX.Element => {
                     />
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>
-                </PokemonTeamProvider>
-              </React.Suspense>
-            </main>
-          </div>
+                </React.Suspense>
+              </main>
+            </div>
+          </PokemonTeamProvider>
         </ToastProvider>
       </ModalProvider>
     </PokemonErrorBoundary>

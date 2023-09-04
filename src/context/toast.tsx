@@ -31,7 +31,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
   children,
   ...props
 }) => {
-  const [toasts, setToasts] = useState<Toast[] | []>([]);
+  const [toasts, setToasts] = useState<Toast[]>([]);
   const open = (component: ReactNode, timeout = 4000) => {
     const id = Date.now();
     setToasts((toasts) => [...toasts, { id, component }]);

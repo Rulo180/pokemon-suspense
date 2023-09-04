@@ -51,7 +51,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
           )}
           {!isNavOpen && (
             <div
-              className="absolute left-full rounded-md px-2 py-1 ml-6 
+              className="absolute z-[1] left-full rounded-md px-2 py-1 ml-6 
             bg-secondary text-copy text-sm 
             invisible opacity-20 -translate-x-3 transition-all 
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0"
@@ -74,7 +74,7 @@ const Sidebar: React.FC = (): JSX.Element => {
   return (
     <aside className="min-h-screen">
       <nav className="h-full flex flex-col bg-secondary border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
+        <div className="p-2 md:p-4 pb-2 flex justify-between items-center">
           <img
             src="/images/pokemon-logo.png"
             alt="Pokemon logo"
@@ -89,7 +89,7 @@ const Sidebar: React.FC = (): JSX.Element => {
             {isOpen ? <MdChevronLeft /> : <MdChevronRight />}
           </button>
         </div>
-        <ul className="flex-1 px-3">
+        <ul className="flex-1 px-1">
           <SidebarLink
             icon={<MdShield />}
             isNavOpen={isOpen}
