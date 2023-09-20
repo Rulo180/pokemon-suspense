@@ -24,7 +24,7 @@ function useToast() {
 }
 
 interface ToastProviderProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 const ToastProvider: React.FC<ToastProviderProps> = ({

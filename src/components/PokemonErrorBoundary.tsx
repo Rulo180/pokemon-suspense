@@ -39,7 +39,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
 };
 
 interface PokemonErrorBoundaryProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode;
   onReset?: () => void;
   resetKeys?: string[];
 }

@@ -21,7 +21,7 @@ function usePokemonTeam() {
 }
 
 interface PokemonTeamProviderProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 const PokemonTeamProvider: React.FC<PokemonTeamProviderProps> = ({
