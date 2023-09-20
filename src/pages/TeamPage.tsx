@@ -22,7 +22,7 @@ const pokemonQuery = `
   `;
 
 const TeamPage: React.FC = () => {
-  const [team, _] = usePokemonTeam();
+  const [team] = usePokemonTeam();
   const [pokemonResources, setPokemonResources] = useState<Resource<
     Pokemon[]
   > | null>(null);

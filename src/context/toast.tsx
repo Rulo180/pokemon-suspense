@@ -56,6 +56,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
                     <button
                       className="absolute top-2 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60"
                       onClick={() => close(id)}
+                      aria-label="Close"
                     >
                       <MdClose color="white" />
                     </button>

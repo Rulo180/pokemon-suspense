@@ -30,7 +30,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
         <p>Sorry. We are having technical issues (as you can see).</p>
         <p>Try to refresh the page, sometimes works :)</p>
         {canReset ? (
-          <button onClick={resetErrorBoundary}>Try again</button>
+          <button onClick={resetErrorBoundary} aria-label="Try again">Try again</button>
         ) : null}
         <pre style={{ whiteSpace: "normal" }}>{error.message}</pre>
       </div>

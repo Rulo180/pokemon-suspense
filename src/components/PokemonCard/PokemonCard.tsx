@@ -53,10 +53,13 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
             ))}
           </div>
           <div className="flex items-center justify-between text-sm pt-2">
-            <button className="btn btn-secondary">See info</button>
+            <button className="btn btn-secondary" aria-label="See info">
+              See info
+            </button>
             <button
               className="btn btn-primary shadow-sm rounded-full p-2"
               onClick={handleCtaClick}
+              aria-label={ctaLabel as string}
             >
               {ctaLabel}
             </button>

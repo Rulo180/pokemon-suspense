@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   MdAdd,
   MdOutlineErrorOutline,
@@ -55,12 +55,14 @@ const PokemonGrid: React.FC<PokemonGridProps> = ({ pokemonResources }) => {
             <button
               className="px-4 py-2 bg-gray-300 text-gray-700 rounded mr-2"
               onClick={closeModal}
+              aria-label="Cancel"
             >
               Cancel
             </button>
             <button
               className="px-4 py-2 bg-red-500 text-white rounded"
               onClick={() => handleDelete(pokemonId)}
+              aria-label="Remove"
             >
               Remove
             </button>

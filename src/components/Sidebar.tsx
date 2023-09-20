@@ -85,6 +85,7 @@ const Sidebar: React.FC = () => {
           <button
             onClick={handleOpen}
             className="p-1.5 rounded-lg bg-secondary border border-slate-500"
+            aria-label="Toggle sidebar"
           >
             {isOpen ? <MdChevronLeft /> : <MdChevronRight />}
           </button>
