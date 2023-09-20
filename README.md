@@ -37,9 +37,23 @@ Code Sandbox: https://codesandbox.io/p/github/Rulo180/pokemon-suspense/main
 
 ## Screenshots
 
+### Pokemon collection
+
 ![image](https://github.com/Rulo180/pokemon-suspense/assets/4674147/34d955b1-cc7e-45bd-8df2-6c13756b3378)
 
+![Pokemon Suspense  Collection - Lighthouse Result](https://github.com/Rulo180/pokemon-suspense/assets/4674147/93b9cfd4-3484-4881-9bbd-72be6a660354)
+
+### Pokemon Team
+
+![image](https://github.com/Rulo180/pokemon-suspense/assets/4674147/be2edd89-0435-4440-accf-a66dcb4ba8f1)
+
+![Pokemon Suspense  Team- Lighthouse Result](https://github.com/Rulo180/pokemon-suspense/assets/4674147/90c67be8-16c3-482d-8baa-a35ac21a10d6)
+
+### Pokemon Page
+
 ![image](https://github.com/Rulo180/pokemon-suspense/assets/4674147/faa5d3ad-1090-4d0b-aad5-06761e0cbc71)
+
+![Pokemon Suspense  Pokemon Page - Lighthouse Result](https://github.com/Rulo180/pokemon-suspense/assets/4674147/3e2aeefa-4c9c-41d7-b3f2-26571494948e)
 
 ## Available Scripts
 
