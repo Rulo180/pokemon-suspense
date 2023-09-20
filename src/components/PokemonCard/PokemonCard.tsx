@@ -31,7 +31,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
     >
       <Link to={url}>
         <aside className="p-3">
-          <figure className="m-0 p-0 overflow-hidden relative p-[50%]">
+          <figure className="m-0 overflow-hidden relative p-[50%]">
             <img
               className="absolute top-0 left-0 max-h-full"
               src={image}

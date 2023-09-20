@@ -77,12 +77,11 @@ const PokemonPage: React.FC = () => {
 
   return (
     <div className="text-copy p-3 md:p-6">
-      <Link
-        to="/collection"
-        className="flex items-center text-blue-500 hover:text-blue-700"
-      >
-        <MdChevronLeft />
-        Back
+      <Link to="/collection" className="link inline-block">
+        <div className="flex items-center">
+          <MdChevronLeft />
+          Back
+        </div>
       </Link>
       {pokemonResource && (
         <Suspense fallback={<Skeleton />}>

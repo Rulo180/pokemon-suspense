@@ -23,6 +23,9 @@
   .btn-secondary {
     @apply border border-primary hover:outline-2 focus:ring-primary/75;
   }
+  .link {
+    @apply text-tertiary hover:text-tertiary/80 font-semibold hover:cursor-pointer hover:no-underline
+  }
 }
 
 .types-scrollbar::-webkit-scrollbar {
