@@ -49,7 +49,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({
           </div>
           <div className="flex align-center space-x-1 overflow-x-auto types-scrollbar">
             {types.map((type: PokemonType) => (
-              <Pill text={type} />
+              <Pill key={`${name}-${type}`} text={type} />
             ))}
           </div>
           <div className="flex items-center justify-between text-sm pt-2">
