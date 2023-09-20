@@ -8,7 +8,7 @@ interface EmptyStateProps {
 const EmptyState: React.FC<EmptyStateProps> = ({
   message,
   title,
-}): JSX.Element => {
+}) => {
   return (
     <div className="flex flex-col grow justify-center items-center py-6">
       <div className="pb-4">

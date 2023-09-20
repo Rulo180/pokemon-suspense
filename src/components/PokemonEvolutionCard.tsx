@@ -13,7 +13,7 @@ const PokemonEvolutionCard: React.FC<PokemonEvolutionCardProps> = ({
   name,
   number,
   url,
-}): JSX.Element => {
+}) => {
   return (
     <Link to={url}>
       <article className="flex flex-col items-center gap-2">

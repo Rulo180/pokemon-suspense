@@ -1,6 +1,6 @@
 import React from "react";
 
-const Skeleton: React.FC = (): JSX.Element => {
+const Skeleton: React.FC = () => {
   return (
     <div className="border border-blue-200 shadow rounded-md max-w-sm w-full mx-auto">
       <div className="animate-pulse flex flex-col space-x-4">

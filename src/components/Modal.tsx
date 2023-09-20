@@ -6,10 +6,7 @@ interface ModalProps {
   modalContent: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  modalContent,
-}): JSX.Element | null => {
+const Modal: React.FC<ModalProps> = ({ isOpen, modalContent }) => {
   const modalRoot = document.getElementById("modal-root");
 
   return modalRoot?.parentNode

@@ -60,7 +60,7 @@ function getPokemonResource(pokemonName: string): {
   return { data, image };
 }
 
-const PokemonPage: React.FC = (): JSX.Element => {
+const PokemonPage: React.FC = () => {
   const [pokemonResource, setPokemonResource] = useState<{
     data: Resource<Pokemon>;
     image: Resource<string>;

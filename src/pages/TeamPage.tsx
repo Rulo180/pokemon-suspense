@@ -21,7 +21,7 @@ const pokemonQuery = `
   }
   `;
 
-const TeamPage: React.FC = (): JSX.Element => {
+const TeamPage: React.FC = () => {
   const [team, _] = usePokemonTeam();
   const [pokemonResources, setPokemonResources] = useState<Resource<
     Pokemon[]

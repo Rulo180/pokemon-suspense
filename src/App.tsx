@@ -11,7 +11,7 @@ const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 const PokemonPage = React.lazy(() => import("./pages/PokemonPage"));
 const TeamPage = React.lazy(() => import("./pages/TeamPage"));
 
-const App: React.FC = (): JSX.Element => {
+const App: React.FC = () => {
   return (
     <PokemonErrorBoundary>
       <ModalProvider>

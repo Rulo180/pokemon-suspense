@@ -12,7 +12,7 @@ const Toast: React.FC<ToastProps> = ({
   message,
   title,
   type = "info",
-}): JSX.Element => {
+}) => {
   return (
     <div
       className={`flex items-center gap-2 text-white p-4 rounded-lg shadow-lg ${

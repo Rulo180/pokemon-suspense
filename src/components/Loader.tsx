@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader: React.FC = (): JSX.Element => {
+const Loader: React.FC = () => {
   return (
     <div className="flex absolute w-full h-full justify-center items-center">
       <span className="inline-block w-3 h-3 rounded-md bg-slate-300 my-auto mx-2 animate-ping delay-500" />

@@ -27,7 +27,7 @@ function createPokemonResource(first?: number): Resource<Pokemon[]> {
   ) as Resource<Pokemon[]>;
 }
 
-const CollectionPage: React.FC = (): JSX.Element => {
+const CollectionPage: React.FC = () => {
   const [pokemonResources, setPokemonResource] = useState<Resource<
     Pokemon[]
   > | null>(null);

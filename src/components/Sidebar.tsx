@@ -20,7 +20,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
   isNavOpen,
   text,
   url,
-}): JSX.Element => {
+}) => {
   return (
     <li className="group">
       <NavLink
@@ -65,7 +65,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
   );
 };
 
-const Sidebar: React.FC = (): JSX.Element => {
+const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
   const handleOpen = () => {
     setIsOpen(!isOpen);

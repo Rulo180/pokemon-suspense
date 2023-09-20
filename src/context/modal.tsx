@@ -25,7 +25,7 @@ interface ModalProviderProps {
 const ModalProvider: React.FC<ModalProviderProps> = ({
   children,
   ...props
-}): JSX.Element => {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState<ReactNode | null>(null);
 
